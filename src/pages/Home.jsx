@@ -77,9 +77,9 @@ const Home = () => {
                   <Slide products={productData} title="Top Selection" />
                 </LeftComponent>
 
-                <RightComponent>
+                {/* <RightComponent>
                   <img src={adURL} alt="" style={{ width: 217 }} />
-                </RightComponent>
+                </RightComponent> */}
               </Component>
 
               <Slide products={productData} title="Deals of the Day" />
@@ -114,7 +114,7 @@ const Component = styled(Box)`
 `;
 
 const LeftComponent = styled(Box)(({ theme }) => ({
-  width: '83%',
+  width: '100%',
   [theme.breakpoints.down('md')]: {
     width: '100%',
   },

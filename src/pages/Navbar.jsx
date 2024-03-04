@@ -339,6 +339,8 @@ const Navbar = () => {
                     anchor="right"
                     open={isCartOpen}
                     onClose={handleCloseCart}
+                    onClick={()=>navigate("/cart")}
+                   
                     sx={{
                         width: '400px',
                         flexShrink: 0,
