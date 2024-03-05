@@ -26,7 +26,7 @@ const Search = () => {
     return (
         <SearchContainer>
             <InputSearchBase
-                placeholder="Search for products, brands and more"
+                placeholder="Search for Products, brands and more"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyDown={(e) => {
@@ -43,7 +43,7 @@ const Search = () => {
 }
 
 const SearchContainer = styled(Box)`
-  border-radius: 2px;
+  border-radius: 10px;
   margin-left: 10px;
   width: 38%;
   background-color: #fff;
