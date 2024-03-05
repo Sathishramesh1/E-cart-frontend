@@ -1,12 +1,14 @@
-import { Divider, Box, Typography, Button, styled, Container } from '@mui/material';
+import { Divider, Box, Typography, Button, styled, Container, ImageList, ImageListItem } from '@mui/material';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 
 const Slide = ({ products, title }) => {
     const navigate = useNavigate()
-
+    const location = useLocation();
+      
+   
     return (
         <Component>
             <Deal>
@@ -52,6 +54,7 @@ const Slide = ({ products, title }) => {
                     ))
                 }
             </Carousel>
+            
         </Component>
     )
 }
@@ -101,8 +104,9 @@ const ViewAllButton = styled(Button)`
 `;
 
 const Image = styled('img')({
-    width: 'auto',
-    height: 150
+    width: '200px',
+    height: '200px',
+    objectFit:'contain'
 })
 
 const TitleText = styled(Typography)`

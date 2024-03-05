@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Container, styled } from '@mui/material';
+import { Box, Container, ImageList, ImageListItem, styled } from '@mui/material';
 import Slide from './Slide';
 import Banner from './Banner';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,6 +17,22 @@ const Home = () => {
   const { productData, responseProducts, error } = useSelector((state) => state.user);
 
   const [showNetworkError, setShowNetworkError] = useState(false);
+  const itemData = [
+    {
+      img: 'https://rukminim1.flixcart.com/fk-p-flap/520/280/image/ec6cf773ae886bd7.jpg?q=20',
+      title: 'Kitchen Appliance',
+    },
+    {
+      img: 'https://rukminim1.flixcart.com/fk-p-flap/520/280/image/22e305bf45e2e1a2.jpeg?q=20',
+      title: 'Clothing ',
+    },
+    {
+      img: 'https://rukminim1.flixcart.com/fk-p-flap/520/280/image/c3146ff3077e7744.jpg?q=20',
+      title: 'Haircare',
+    },
+    
+  ];
+
 
   useEffect(() => {
     dispatch(getProducts());
@@ -72,6 +88,19 @@ const Home = () => {
             </>
           ) : (
             <>
+            <ImageList sx={{ width: 'auto', height:'auto',padding:"20px 10px 20px 10px" }} cols={3} rowHeight={'auto'}>
+      {itemData.map((item) => (
+        <ImageListItem key={item.img}>
+          <CustomImage
+            // srcSet={`${item.img}?w=164&h=210&fit=crop&auto=format&dpr=1 1x, ${item.img}?w=164&h=210&fit=crop&auto=format&dpr=2 2x`}
+            className="custom-image"
+            src={item.img}
+            alt={item.title}
+            loading="lazy"
+          />
+        </ImageListItem>
+      ))}
+    </ImageList>
               <Component>
                 <LeftComponent>
                   <Slide products={productData} title="Top Selection" />
@@ -119,6 +148,11 @@ const LeftComponent = styled(Box)(({ theme }) => ({
     width: '100%',
   },
 }));
+const CustomImage = styled('img')`
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+`;
 
 const RightComponent = styled(Box)(({ theme }) => ({
   marginTop: 10,
