@@ -8,10 +8,11 @@ import { LightPurpleButton } from '../utils/buttonStyles';
 import { authUser } from '../redux/userHandle';
 import styled from 'styled-components';
 import Popup from '../components/Popup';
+import { Button } from 'react-scroll';
 
 const AuthenticationPage = ({ mode, role }) => {
 
-    const bgpic = "https://images.pexels.com/photos/1121097/pexels-photo-1121097.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    const bgpic = "https://img.freepik.com/free-vector/ecommerce-campaign-concept-illustration_114360-8432.jpg?w=740&t=st=1709807472~exp=1709808072~hmac=6c4ed359ab0a057582f054d5ad0d95d87e42f8ad02c2f2bc2ec4fdbc6c363369"
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -95,6 +96,15 @@ const AuthenticationPage = ({ mode, role }) => {
             setShowPopup(true)
         }
     }, [status, currentUser, currentRole, navigate, error, response]);
+
+
+    const handleDemo=(event)=>{
+        event.preventDefault();
+        const email="sathishmech2k13@gmail.com"
+        const password="1234567890"
+        const fields = { email, password }
+        dispatch(authUser(fields, role, mode))
+    }
 
     return (
         <>
@@ -235,6 +245,16 @@ const AuthenticationPage = ({ mode, role }) => {
                             >
                                 {loader ? <CircularProgress size={24} color="inherit" /> : mode}
                             </LightPurpleButton>
+                            <LightPurpleButton
+                                type="click"
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2 }}
+                                onClick={handleDemo}
+                            >demo &nbsp;
+                                {loader ? <CircularProgress size={24} color="blue" /> : mode}
+                            </LightPurpleButton>
+                           
                             <Grid container>
                                 <Grid>
                                     {mode === "Register" ?
